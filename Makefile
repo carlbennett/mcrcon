@@ -37,12 +37,12 @@ ifneq ($(OS), Windows_NT)
 install:
 	$(INSTALL) -vD $(EXENAME) $(PREFIX)/bin/$(EXENAME)
 	$(INSTALL) -vD -m 0644 mcrcon.1 $(PREFIX)/share/man/man1/mcrcon.1
-	@echo "\nmcrcon installed. Run 'make uninstall' if you want to uninstall.\n"
+	@echo -e "\nmcrcon installed. Run 'make uninstall' if you want to uninstall.\n"
 
 .PHONY: uninstall
 uninstall:
 	rm -f $(PREFIX)/bin/$(EXENAME) $(PREFIX)/share/man/man1/mcrcon.1
-	@echo "\nmcrcon uninstalled.\n"
+	@echo -e "\nmcrcon uninstalled.\n"
 endif
 
 .PHONY: clean
