@@ -13,7 +13,7 @@ LINKER =
 RM = rm -f
 
 ifeq ($(OS), Windows_NT)
-    CC = gcc
+	CC = gcc
 	LINKER = -lws2_32
 	EXENAME = mcrcon.exe
 	RM = cmd /C del /F
@@ -35,13 +35,13 @@ $(EXENAME): mcrcon.c
 ifneq ($(OS), Windows_NT)
 .PHONY: install
 install:
-	$(INSTALL) -vD $(EXENAME) $(PREFIX)/bin/$(EXENAME)
-	$(INSTALL) -vD -m 0644 mcrcon.1 $(PREFIX)/share/man/man1/mcrcon.1
+	$(INSTALL) -vD $(EXENAME) $(DESTDIR)$(PREFIX)/bin/$(EXENAME)
+	$(INSTALL) -vD -m 0644 mcrcon.1 $(DESTDIR)$(PREFIX)/share/man/man1/mcrcon.1
 	@echo -e "\nmcrcon installed. Run 'make uninstall' if you want to uninstall.\n"
 
 .PHONY: uninstall
 uninstall:
-	rm -f $(PREFIX)/bin/$(EXENAME) $(PREFIX)/share/man/man1/mcrcon.1
+	rm -f $(DESTDIR)$(PREFIX)/bin/$(EXENAME) $(DESTDIR)$(PREFIX)/share/man/man1/mcrcon.1
 	@echo -e "\nmcrcon uninstalled.\n"
 endif
 
